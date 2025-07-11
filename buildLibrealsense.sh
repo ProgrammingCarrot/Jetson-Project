@@ -170,7 +170,7 @@ else
   fi
 fi
 echo "${green}Installing librealsense, headers, tools and demos${reset}"
-sudo make install
+make install
   
 if  grep -Fxq 'export PYTHONPATH=$PYTHONPATH:/usr/local/lib' ~/.bashrc ; then
     echo "PYTHONPATH already exists in .bashrc file"
@@ -182,8 +182,8 @@ fi
 cd $LIBREALSENSE_DIRECTORY
 echo "${green}Applying udev rules${reset}"
 # Copy over the udev rules so that camera can be run from user space
-sudo cp config/99-realsense-libusb.rules /etc/udev/rules.d/
-sudo udevadm control --reload-rules && udevadm trigger
+cp config/99-realsense-libusb.rules /etc/udev/rules.d/
+udevadm control --reload-rules && udevadm trigger
 
 echo "${green}Library Installed${reset}"
 echo " "
